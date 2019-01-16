@@ -1,23 +1,26 @@
 @import '~@angular/material/theming';
 @import 'theme/san-white';
 
+$paddingCard: 17px;
+
 mat-card {
-    padding: 0px;
+    padding: $paddingCard;
 
     mat-card-header {
         background-color: mat-color($san-app-primary);
+        margin: -$paddingCard;
 
         .title {
             color: mat-contrast($san-app-primary, 900);
             font-size: 18px !important;
-            padding: 17px;
+            padding: $paddingCard;
             padding-bottom: 0px;
         }
     }
     
     mat-form-field {
         width: 100%;
-        margin: 12px 17px 0px 17px;
+        margin: 24px 17px 0px 17px;
     }
 
     .mat-card-actions {
