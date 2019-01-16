@@ -1,0 +1,57 @@
+@import '~@angular/material/theming';
+@import 'theme/san-white';
+
+
+mat-expansion-panel {
+    margin-bottom: 17px !important;
+    
+    mat-expansion-panel-header,
+    .mat-expanded {
+        background-color: mat-color($san-app-primary);
+
+        mat-panel-title,
+        ::ng-deep .mat-expansion-indicator:after {
+            color: mat-contrast($san-app-primary, 900);
+        }
+
+        &:hover {
+            background-color: mat-contrast($san-app-primary, 900);
+
+            mat-panel-title,
+            ::ng-deep .mat-expansion-indicator:after {
+                color: mat-color($san-app-primary);
+            }
+    
+        }
+    }
+
+    mat-form-field {
+        width: 100%;
+        margin: 12px 17px 0px 17px;
+    }
+
+    .filter-actions {
+        text-align: right;
+        
+        button {
+            margin-right: 17px;
+        }
+
+        mat-progress-spinner {
+            float: right;
+        }
+    }
+}
+
+table {
+    width: 100%;
+
+    .mat-header-cell {
+        background-color: mat-color($san-app-primary);
+        color: mat-contrast($san-app-primary, 900);
+    }
+
+    tr.mat-row:nth-child(even) td.mat-cell {
+        background-color: mat-color($san-app-accent);
+    }
+}

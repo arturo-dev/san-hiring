@@ -1,0 +1,32 @@
+@import '~@angular/material/theming';
+@import 'theme/san-white';
+
+.logo {
+    max-width: 220px;
+    padding: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0px;
+}
+
+.menu {
+
+    .menu-option {
+        padding: 12px;
+
+        &:hover,
+        &.active {
+            background-color: mat-color($san-app-primary);
+            color: mat-contrast($san-app-primary, 900);
+            cursor: pointer;
+        }
+    } 
+}
+
+.icon-align {
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 12px;
+}

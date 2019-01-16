@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title class="title">Nueva solicitud</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <form (submit)="submit($event)">
+      <mat-card-content>
+        <mat-grid-list cols="2" rowHeight="76px">
+            <mat-grid-tile>
+              <mat-form-field>
+                  <input matInput placeholder="Usuario">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field>
+                  <input matInput placeholder="Campo 1">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field>
+                  <input matInput placeholder="Campo 2">
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+       
+      <mat-card-actions>
+          <button mat-stroked-button [disabled]="buttonsDisabled">Cancelar</button>
+          <button mat-stroked-button color="primary" [disabled]="buttonsDisabled">Guardar</button>
+          <button mat-raised-button color="primary" [disabled]="buttonsDisabled">Enviar</button>
+          <mat-progress-spinner
+            *ngIf="buttonsDisabled"
+            mode="indeterminate"
+            diameter="36">
+          </mat-progress-spinner>
+      </mat-card-actions>
+    </form>
+
+</mat-card>

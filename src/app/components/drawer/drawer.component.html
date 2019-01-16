@@ -1,0 +1,15 @@
+<section>
+  <img class="logo" src="assets/public/img/santander_logo.png" />
+
+  <nav>
+    <ul class="menu">
+      <li class="menu-option" 
+        [ngClass]="{ 'active': option.active }" 
+        *ngFor="let option of options"
+        (click)="navigate(option)">
+        <mat-icon>{{option.icon}}</mat-icon>
+        <span class="icon-align">{{option.label}}</span>
+      </li>
+    </ul>
+  </nav>
+</section>

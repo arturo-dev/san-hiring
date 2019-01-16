@@ -1,0 +1,36 @@
+@import '~@angular/material/theming';
+@import 'theme/san-white';
+
+mat-card {
+    padding: 0px;
+
+    mat-card-header {
+        background-color: mat-color($san-app-primary);
+
+        .title {
+            color: mat-contrast($san-app-primary, 900);
+            font-size: 18px !important;
+            padding: 17px;
+            padding-bottom: 0px;
+        }
+    }
+    
+    mat-form-field {
+        width: 100%;
+        margin: 12px 17px 0px 17px;
+    }
+
+    .mat-card-actions {
+        text-align: right;
+        margin-left: 6px;
+        margin-right: 6px;
+
+        button {
+            margin: 0px 12px;
+        }
+
+        mat-progress-spinner {
+            float: right;
+        }
+    }
+}
