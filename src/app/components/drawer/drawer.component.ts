@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Constant } from 'src/app/core/constant';
+import { Constant } from './../../core/constant';
 import { Router, NavigationEnd } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 

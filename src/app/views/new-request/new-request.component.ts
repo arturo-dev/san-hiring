@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Constant } from 'src/app/core/constant';
+import { Constant } from './../../core/constant';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
