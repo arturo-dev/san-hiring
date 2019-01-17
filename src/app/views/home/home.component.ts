@@ -3,6 +3,7 @@ import { MatExpansionPanel } from '@angular/material/expansion';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'san-hiring-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor() { }
 
@@ -24,9 +26,15 @@ export class HomeComponent implements OnInit {
       {id: 1, state: 'PDTE. ALGO'},
       {id: 2, date: '01-01-2019'},
       {id: 3},
-      {id: 4}
+      {id: 4},
+      {id: 5},
+      {id: 6},
+      {id: 7},
+      {id: 8},
+      {id: 9},
     ]); 
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnChanges() {

@@ -8,6 +8,7 @@ mat-expansion-panel {
     mat-expansion-panel-header,
     .mat-expanded {
         background-color: mat-color($san-app-primary);
+        transition: all ease 0.3s;
 
         mat-panel-title,
         ::ng-deep .mat-expansion-indicator:after {

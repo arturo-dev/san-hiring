@@ -14,6 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { FormsModule } from '@angular/forms';
@@ -38,7 +40,9 @@ import { FormsModule } from '@angular/forms';
     MatSnackBarModule,
     MatIconModule,
     MatCheckboxModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule,
+    MatSelectModule
   ],
   declarations: [NewRequestComponent, HomeComponent, AdminComponent]
 })
