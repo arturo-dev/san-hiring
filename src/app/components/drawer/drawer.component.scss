@@ -15,6 +15,7 @@ ul {
 
     .menu-option {
         padding: 12px;
+        transition: all ease 0.3s;
 
         &:hover,
         &.active {

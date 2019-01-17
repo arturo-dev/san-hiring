@@ -49,7 +49,7 @@ export class DrawerComponent implements OnInit {
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         for (let o of this.options) {
-          if (e.url.indexOf(o.route.join('/')) > -1) {
+          if (e.urlAfterRedirects.indexOf(o.route.join('/')) > -1) {
             o.active = true;
           } else {
             o.active = false;

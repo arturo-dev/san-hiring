@@ -9,14 +9,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
 
     // San hiring
     ViewsRoutingModule,
@@ -30,7 +35,10 @@ import { AdminComponent } from './admin/admin.component';
     MatTableModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatSortModule
   ],
   declarations: [NewRequestComponent, HomeComponent, AdminComponent]
 })

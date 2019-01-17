@@ -54,4 +54,17 @@ table {
     tr.mat-row:nth-child(even) td.mat-cell {
         background-color: mat-color($san-app-accent);
     }
+
+    ::ng-deep .mat-sort-header-arrow {
+        color: mat-contrast($san-app-primary, 900);
+    }
+
+    .actions {
+        text-align: right;
+        
+        mat-icon {
+            margin-left: 7px;
+            cursor: pointer;
+        }
+    }
 }
