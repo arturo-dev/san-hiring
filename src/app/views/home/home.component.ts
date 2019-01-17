@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,7 +9,7 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit OnChanges {
+export class HomeComponent implements OnInit {
   selection = new SelectionModel<any>(true, []);
   buttonsDisabled = false;
   displayedColumns: string[] = ['selection', 'id', 'state', 'date', 'actions'];
