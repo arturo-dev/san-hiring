@@ -41,7 +41,14 @@
         </form>
     </mat-expansion-panel>
   </mat-accordion>
-  
+
+<div class="wrapper-actions">
+  <div *ngIf="selection.hasValue()">
+    <button mat-icon-button><mat-icon>cancel</mat-icon></button>
+    <button mat-icon-button><mat-icon>assignment_turned_in</mat-icon></button>
+    <button mat-icon-button><mat-icon>info</mat-icon></button>
+  </div>
+</div>
 <div class="mat-elevation-z8">
 <table mat-table [dataSource]="dataSource" matSort >
 
@@ -81,6 +88,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> </th>
     <td mat-cell class="actions" *matCellDef="let element"> 
+      <button mat-icon-button><mat-icon>cancel</mat-icon></button>
       <button mat-icon-button><mat-icon>assignment_turned_in</mat-icon></button>
       <button mat-icon-button><mat-icon>info</mat-icon></button>
     </td>
