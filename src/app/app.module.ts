@@ -13,7 +13,7 @@ import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,7 @@ import { ComponentsModule } from './components/components.module';
     // Material
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
