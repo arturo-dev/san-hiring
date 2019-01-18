@@ -16,9 +16,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { FormsModule } from '@angular/forms';
+import { RequestDetailComponent } from './request-detail/request-detail.component';
 
 @NgModule({
   imports: [
@@ -42,8 +44,9 @@ import { FormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatSortModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule
   ],
-  declarations: [NewRequestComponent, HomeComponent, AdminComponent]
+  declarations: [NewRequestComponent, HomeComponent, AdminComponent, RequestDetailComponent]
 })
 export class ViewsModule { }

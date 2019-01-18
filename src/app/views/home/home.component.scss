@@ -48,12 +48,28 @@ mat-expansion-panel {
     min-height: 40px;
 }
 
+.wrapper-table {
+    overflow-y: auto;
+    width: auto;
+}
+
 table {
-    width: 100%;
+    width: auto;
 
     .mat-header-cell {
         background-color: mat-color($san-app-primary);
         color: mat-contrast($san-app-primary, 900);
+        min-width: 60px;
+        padding-left: 12px;
+    }
+
+    .mat-table-sticky:nth-child(2) {
+        border-right: 1px solid #e0e0e0;
+    }
+
+    .mat-row td {
+        padding-left: 12px;
+        padding-right: 24px;
     }
 
     tr.mat-row:nth-child(even) td.mat-cell {

@@ -46,33 +46,57 @@
   <div *ngIf="selection.hasValue()">
     <button mat-icon-button><mat-icon>cancel</mat-icon></button>
     <button mat-icon-button><mat-icon>assignment_turned_in</mat-icon></button>
-    <button mat-icon-button><mat-icon>info</mat-icon></button>
   </div>
 </div>
-<div class="mat-elevation-z8">
+<div class="wrapper-table mat-elevation-z8">
 <table mat-table [dataSource]="dataSource" matSort >
 
-  <ng-container matColumnDef="selection">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-checkbox 
-          (change)="$event ? masterToggle() : null"
-          color="primary"
-          [checked]="selection.hasValue() && isAllSelected()"
-          [indeterminate]="selection.hasValue() && !isAllSelected()">
-        </mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row">
-        <mat-checkbox (click)="$event.stopPropagation()"
-          color="primary"
-          (change)="$event ? selection.toggle(row) : null"
-          [checked]="selection.isSelected(row)">
-        </mat-checkbox>
-      </td>
-    </ng-container>
+  <ng-container matColumnDef="selection" sticky>
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox 
+        (change)="$event ? masterToggle() : null"
+        color="primary"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+        color="primary"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
 
-  <ng-container matColumnDef="id">
+  <ng-container matColumnDef="id" sticky>
     <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> DESCRIPCION </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateCreation">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> F. ALTA </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateCreation}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="area">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> AREA </th>
+    <td mat-cell *matCellDef="let element"> {{element.area}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="departamento">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> DEPARTAMENTO </th>
+    <td mat-cell *matCellDef="let element"> {{element.departamento}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="propietario">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> PROPIETARIO </th>
+    <td mat-cell *matCellDef="let element"> {{element.propietario}} </td>
   </ng-container>
 
   <ng-container matColumnDef="state">
@@ -81,16 +105,18 @@
   </ng-container>
 
   <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> FECHA </th>
+      <th mat-header-cell *matHeaderCellDef> F. ESTADO </th>
     <td mat-cell *matCellDef="let element"> {{element.date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> </th>
     <td mat-cell class="actions" *matCellDef="let element"> 
+      <!--
       <button mat-icon-button><mat-icon>cancel</mat-icon></button>
       <button mat-icon-button><mat-icon>assignment_turned_in</mat-icon></button>
-      <button mat-icon-button><mat-icon>info</mat-icon></button>
+      <button mat-icon-button (click)="navigateDetail(element)"><mat-icon>info</mat-icon></button>
+      -->
     </td>
   </ng-container>
 
@@ -98,6 +124,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
 </div>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   

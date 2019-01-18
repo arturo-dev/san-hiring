@@ -4,6 +4,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { Constant } from 'src/app/core/constant';
 
 @Component({
   selector: 'san-hiring-home',
@@ -13,17 +15,43 @@ import { MatPaginator } from '@angular/material/paginator';
 export class HomeComponent implements OnInit {
   selection = new SelectionModel<any>(true, []);
   buttonsDisabled = false;
-  displayedColumns: string[] = ['selection', 'id', 'state', 'date', 'actions'];
+  displayedColumns: string[] = [
+    'selection', 
+    'id',
+    'description',
+    'description',
+    'description',
+    'description',
+    'description',
+    'dateCreation',
+    'area',
+    'departamento',
+    'propietario',
+    'state', 
+    'date', 
+    'actions'
+  ];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource([
-      {id: 1, state: 'PDTE. ALGO'},
+      {
+        id: 1,
+        description: 'Solicitud recurso 1 blah blah blah',
+        dateCreation: '19-oct',
+        area: 'Desarrollo',
+        departamento: 'COREBANKING',
+        propietario: 'Director 1',
+        state: 'PDTE. APROBAR',
+        date: '19-oct'
+      },
       {id: 2, date: '01-01-2019'},
       {id: 3},
       {id: 4},
@@ -37,8 +65,12 @@ export class HomeComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  ngOnChanges() {
-    
+  navigateDetail(el) {
+    this.router.navigate([
+      Constant.PATH_VIEW,
+      Constant.PATH_REQUEST,
+      el.id
+    ]);
   }
 
   submit(e, filter: MatExpansionPanel): void {

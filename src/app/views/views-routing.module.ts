@@ -4,6 +4,7 @@ import { NewRequestComponent } from './new-request/new-request.component';
 import { Constant } from '../core/constant';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import { RequestDetailComponent } from './request-detail/request-detail.component';
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
     {
         path: `${Constant.PATH_REQUEST}/${Constant.PATH_NEW}`,
         component: NewRequestComponent
+    },
+    {
+        path: `${Constant.PATH_REQUEST}/:id`,
+        component: RequestDetailComponent
     },
     {
         path: `${Constant.PATH_ADMIN}`,

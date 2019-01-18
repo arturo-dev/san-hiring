@@ -9,7 +9,51 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$san-app-primary: mat-palette($mat-red);
+
+$primary-color-dark:   #D32F2F;
+$primary-color:        #ec0000;
+$primary-color-light:  #FFCDD2;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #9E9E9E;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+$pallete-brand: (
+    50: $primary-color,
+    100: $primary-color,
+    200: $primary-color,
+    300: $primary-color,
+    400: $primary-color,
+    500: $primary-color,
+    600: $primary-color,
+    700: $primary-color,
+    800: $primary-color,
+    900: $primary-color,
+    A100: $primary-color,
+    A200: $primary-color,
+    A400: $primary-color,
+    A700: $primary-color,
+    contrast: (
+        50: $secondary-text-color,
+        100: $secondary-text-color,
+        200: $secondary-text-color,
+        300: $secondary-text-color,
+        400: $secondary-text-color,
+        500: $primary-color-text,
+        600: $primary-color-text,
+        700: $primary-color-text,
+        800: $primary-color-text,
+        900: $primary-color-text,
+        A100: $secondary-text-color,
+        A200: $secondary-text-color,
+        A400: $secondary-text-color,
+        A700: $primary-color-text,
+    )
+);
+
+
+$san-app-primary: mat-palette($pallete-brand);
 $san-app-accent:  mat-palette($mat-grey, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
