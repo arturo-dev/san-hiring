@@ -49,7 +49,8 @@ mat-expansion-panel {
 }
 
 .wrapper-table {
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: scroll;
     width: auto;
 }
 
