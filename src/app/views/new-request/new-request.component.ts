@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Constant } from './../../core/constant';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'san-hiring-new-request',
@@ -11,13 +12,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NewRequestComponent implements OnInit {
 
   buttonsDisabled = false;
+  form: FormGroup;
+  peticionario = new FormControl();
+  motivosolicitud = new FormControl();
+  category = new FormControl();
 
   constructor(
     private router: Router,
-    private snack: MatSnackBar
+    private snack: MatSnackBar,
+    private fb: FormBuilder
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.form = this.fb.group({});
+    this.form.addControl('peticionario', this.peticionario);
+    this.form.addControl('motivosolicitud', this.motivosolicitud);
+    this.form.addControl('category', this.category);
+  }
 
   submit(e): void {
     this.buttonsDisabled = true;
@@ -32,7 +43,7 @@ export class NewRequestComponent implements OnInit {
         Constant.PATH_HOME
       ]);
     }, 1500);
-    
+
     e.preventDefault();
   }
 

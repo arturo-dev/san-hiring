@@ -17,15 +17,19 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
 
     // San hiring
     ViewsRoutingModule,
@@ -45,7 +49,10 @@ import { RequestDetailComponent } from './request-detail/request-detail.componen
     MatSortModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [NewRequestComponent, HomeComponent, AdminComponent, RequestDetailComponent]
 })

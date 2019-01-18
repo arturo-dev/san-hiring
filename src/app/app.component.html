@@ -1,18 +1,19 @@
 <mat-drawer-container>
   <mat-drawer #snav
-    [mode]="mobileQuery.matches ? 'side' : 'over'" 
+    [mode]="mobileQuery.matches ? 'side' : 'over'"
     [opened]="mobileQuery.matches">
     <san-hiring-drawer [drawer]="snav" [media]="!mobileQuery.matches"></san-hiring-drawer>
   </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar role="heading" color="primary">
-      <mat-icon 
+      <mat-icon
         class="icon-menu"
         (click)="snav.toggle()"
         *ngIf="!mobileQuery.matches">
         menu
       </mat-icon>
-      <span>San Hiring</span>
+      <span>
+      </span>
       <div class="content-logout">
           <mat-icon class="icon-logout">power_settings_new</mat-icon>
       </div>

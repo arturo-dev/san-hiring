@@ -2,40 +2,141 @@
   <mat-card-header>
     <mat-card-title class="title">Nueva solicitud</mat-card-title>
   </mat-card-header>
-  
-  <form (submit)="submit($event)">
-      <mat-card-content>
-        <mat-grid-list cols="2" rowHeight="76px">
-            <mat-grid-tile>
-              <mat-form-field>
-                  <input matInput placeholder="Usuario">
-                </mat-form-field>
-            </mat-grid-tile>
 
-            <mat-grid-tile>
-              <mat-form-field>
-                  <input matInput placeholder="Campo 1">
-                </mat-form-field>
-            </mat-grid-tile>
+  <form [formGroup]="form" (submit)="submit($event)">
+    <mat-card-content>
+      <mat-grid-list cols="1" rowHeight="76px">
+        <mat-grid-tile>
+          <mat-form-field class="errorPeticionario">
+            <input matInput placeholder="PETICIONARIO" [formControl]="peticionario" required [errorStateMatcher]="matcher">
+            <mat-error *ngIf="peticionario.hasError('peticionario') && !peticionario.hasError('required')">
+              Entra un nombre válido
+            </mat-error>
+            <mat-error *ngIf="peticionario.hasError('required')">
+              El campo "Peticionario" <strong>es obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
 
-            <mat-grid-tile>
-              <mat-form-field>
-                  <input matInput placeholder="Campo 2">
-                </mat-form-field>
-            </mat-grid-tile>
-        </mat-grid-list>
-      </mat-card-content>
-       
-      <mat-card-actions>
-          <button mat-stroked-button [disabled]="buttonsDisabled">Cancelar</button>
-          <button mat-stroked-button color="primary" [disabled]="buttonsDisabled">Guardar</button>
-          <button mat-raised-button color="primary" [disabled]="buttonsDisabled">Enviar</button>
-          <mat-progress-spinner
-            *ngIf="buttonsDisabled"
-            mode="indeterminate"
-            diameter="36">
-          </mat-progress-spinner>
-      </mat-card-actions>
-    </form>
+
+        <mat-grid-tile>
+          <mat-form-field class="errorMotivoSolicitud">
+            <input matInput placeholder="MOTIVO DE LA SOLICITUD" [formControl]="motivosolicitud" required
+              [errorStateMatcher]="matcher">
+            <mat-error *ngIf="motivosolicitud.hasError('motivosolicitud')
+                && !motivosolicitud.hasError('required')">
+              Entra un motivo válido.
+            </mat-error>
+            <mat-error *ngIf="motivosolicitud.hasError('required')">
+              El campo "Motivo de la Solicitud" <strong>es obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="inpuSustitucion">
+            <input matInput placeholder="Sustitución de: " value="">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="inpuSelectServicioSugerido">
+            <mat-select placeholder="SERVICIO SUGERIDO">
+              <mat-option *ngFor="let suggestedservice of suggestedservices" [value]="suggestedservice.value">
+                {{suggestedservice.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="inputProveedor">
+            <input matInput placeholder="Proveedor: " value="">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="inputJustificacionServicioSugerido">
+            <input matInput placeholder="JUSTIFICACIÓN SERVICIO SUGERIDO: " value="">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="inputObservaciones">
+            <textarea matInput placeholder="OBSERVACIONES: "></textarea>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="categoriafuncional">
+              <mat-select placeholder="CATEGORÍA FUNCIONAL" [formControl]="category"
+              required [errorStateMatcher]="matcher">
+                  <mat-option>Limpiar</mat-option>
+                  <mat-option value="valid">Opción Válida</mat-option>
+                  <mat-option value="invalid">Opción Inválida</mat-option>
+                </mat-select>
+                <mat-error *ngIf="category.hasError('required')">Debes de hacer una selección</mat-error>
+                <mat-error *ngIf="category.hasError('pattern') && !category.hasError('required')">
+                  Tu selección es inválida
+                </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+
+        <mat-grid-tile>
+          <mat-form-field class="inputLimiteSupTarifa">
+            <input matInput placeholder="LÍMITE SUP. TARIFA " value="">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="inputNRecursos">
+            <input matInput placeholder=" Nº  DE RECURSOS" value="">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="inputPerfil">
+            <input matInput placeholder="PERFIL" value="">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="inputTecnologia">
+            <input matInput placeholder="TECNOLOGÍA" value="">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="FechaInicio">
+            <input matInput [matDatepicker]="elegir" placeholder="Fecha prevista de Inicio">
+            <mat-datepicker-toggle matSuffix [for]="elegir"></mat-datepicker-toggle>
+            <mat-datepicker #elegir></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="FechaFin">
+            <input matInput [matDatepicker]="elegir2" placeholder="Fecha prevista de Fin">
+            <mat-datepicker-toggle matSuffix [for]="elegir2"></mat-datepicker-toggle>
+            <mat-datepicker #elegir2></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+      </mat-grid-list>
+
+    </mat-card-content>
+
+
+    <mat-card-actions>
+      <button mat-stroked-button [disabled]="buttonsDisabled">Cancelar</button>
+      <button mat-stroked-button color="primary" [disabled]="buttonsDisabled">Guardar</button>
+      <button mat-raised-button color="primary" [disabled]="buttonsDisabled">Enviar</button>
+      <mat-progress-spinner *ngIf="buttonsDisabled" mode="indeterminate" diameter="36">
+      </mat-progress-spinner>
+    </mat-card-actions>
+  </form>
 
 </mat-card>
