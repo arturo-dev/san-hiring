@@ -64,17 +64,42 @@ table {
         padding-left: 12px;
     }
 
-    .mat-table-sticky:nth-child(2) {
+    .mat-table-sticky:nth-child(1) {
         border-right: 1px solid #e0e0e0;
+    }
+
+    mat-checkbox {
+        margin-right: 0px;
     }
 
     .mat-row td {
         padding-left: 12px;
         padding-right: 24px;
+
+    }
+
+    .mat-cell:not(.mat-table-sticky) {
+        white-space: nowrap;
+    }
+
+    .active {
+        background-color: mat-color($san-app-primary, 300);
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .no-border {
+        border: 0px !important;
     }
 
     tr.mat-row:nth-child(even) td.mat-cell {
         background-color: mat-color($san-app-accent);
+
+        &.active {
+            background-color: mat-color($san-app-primary, 300);
+        }
     }
 
     ::ng-deep .mat-sort-header-arrow {

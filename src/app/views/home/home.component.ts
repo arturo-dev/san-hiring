@@ -16,12 +16,8 @@ export class HomeComponent implements OnInit {
   selection = new SelectionModel<any>(true, []);
   buttonsDisabled = false;
   displayedColumns: string[] = [
-    'selection', 
+    //'selection', 
     'id',
-    'description',
-    'description',
-    'description',
-    'description',
     'description',
     'dateCreation',
     'area',
@@ -29,6 +25,9 @@ export class HomeComponent implements OnInit {
     'propietario',
     'state', 
     'date', 
+    'organizacion',
+    'dg',
+    'rrhh',
     'actions'
   ];
   dataSource: MatTableDataSource<any>;
@@ -44,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.dataSource = new MatTableDataSource([
       {
         id: 1,
-        description: 'Solicitud recurso 1 blah blah blah',
+        description: 'Solicitud recurso 1 blah blah blah fjkdlfjkbdn bfbsdahj fbda fasdbjh bfdjlsba fbad',
         dateCreation: '19-oct',
         area: 'Desarrollo',
         departamento: 'COREBANKING',
