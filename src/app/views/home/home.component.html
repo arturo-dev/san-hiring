@@ -43,13 +43,29 @@
   </mat-accordion>
 
 <div class="wrapper-actions">
-  <div *ngIf="selection.hasValue()">
-    <button mat-icon-button><mat-icon>cancel</mat-icon></button>
-    <button mat-icon-button><mat-icon>assignment_turned_in</mat-icon></button>
+  <div [ngClass]="{
+      visible: selection.hasValue(),
+      invisible: !selection.hasValue()
+    }">
+    <button mat-icon-button [ngClass]="{
+      visible: canSelectionAprove(),
+      invisible: !canSelectionAprove()
+    }"><mat-icon>cancel</mat-icon></button>
+    <button mat-icon-button [ngClass]="{
+      visible: canSelectionAprove(),
+      invisible: !canSelectionAprove()
+    }"><mat-icon>assignment_turned_in</mat-icon></button>
+    <button 
+      mat-icon-button
+      [ngClass]="{
+        visible: selection.selected.length == 1,
+        invisible: selection.selected.length != 1
+      }"
+      (click)="navigateDetail(selection.selected[0])"><mat-icon>info</mat-icon></button>
   </div>
 </div>
 <div class="wrapper-table mat-elevation-z8">
-<table mat-table [dataSource]="dataSource" matSort >
+<table mat-table [dataSource]="dataSource" matSort>
 
   <ng-container matColumnDef="id" sticky>
     <th mat-header-cell *matHeaderCellDef> 
@@ -84,7 +100,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header> F. ALTA </th>
     <td mat-cell *matCellDef="let element" [ngClass]="{
       active : selection.isSelected(element)
-    }"> {{element.dateCreation}} </td>
+    }"> {{element.dateCreation | date : 'd/MM/yyyy'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="area">
@@ -119,31 +135,60 @@
       <th mat-header-cell *matHeaderCellDef> F. ESTADO </th>
     <td mat-cell *matCellDef="let element" [ngClass]="{
       active : selection.isSelected(element)
-    }"> {{element.date}} </td>
+    }"> {{element.date | date : 'd/MM/yyyy'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="organizacion">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> ORGANIZACION </th>
     <td mat-cell *matCellDef="let element" [ngClass]="{
       active : selection.isSelected(element)
-    }"> {{element.organizacion}} </td>
+    }">
+      <span class="info-color" [ngClass]="{
+        ok: element.organizacion == 'OK',
+        ko: element.organizacion == 'KO'
+      }">
+            
+      </span> {{element.organizacion}}  
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="dg">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> D.G. </th>
     <td mat-cell *matCellDef="let element" [ngClass]="{
       active : selection.isSelected(element)
-    }"> {{element.dg}} </td>
+    }"> 
+      <span class="info-color" [ngClass]="{
+        ok: element.dg == 'OK',
+        ko: element.dg == 'KO'
+      }">
+        
+      </span> {{element.dg}} 
+    </td>
   </ng-container>
 
-  <ng-container matColumnDef="rrhh">
-    <th mat-header-cell *matHeaderCellDef> 
-      AAAA
-    </th>
+  <ng-container matColumnDef="interno">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> INTERNO </th>
     <td mat-cell *matCellDef="let element" [ngClass]="{
       active : selection.isSelected(element)
     }"> 
-      AAAA
+      <span class="info-color" [ngClass]="{
+        ok: element.interno == 'OK',
+        ko: element.interno == 'KO'
+      }">
+      </span> {{element.interno}} 
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="comite">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> COMITE </th>
+    <td mat-cell *matCellDef="let element" [ngClass]="{
+      active : selection.isSelected(element)
+    }"> 
+      <span class="info-color" [ngClass]="{
+        ok: element.comite == 'OK',
+        ko: element.comite == 'KO'
+      }">
+      </span> {{element.comite}} 
     </td>
   </ng-container>
 
@@ -152,8 +197,8 @@
     <td mat-cell class="actions" *matCellDef="let element" [ngClass]="{
       active : selection.isSelected(element)
     }"> 
-      <button mat-icon-button><mat-icon>cancel</mat-icon></button>
-      <button mat-icon-button><mat-icon>assignment_turned_in</mat-icon></button>
+      <button mat-icon-button *ngIf="canSomeAprove(element)"><mat-icon>cancel</mat-icon></button>
+      <button mat-icon-button *ngIf="canSomeAprove(element)"><mat-icon>assignment_turned_in</mat-icon></button>
       <button mat-icon-button (click)="navigateDetail(element)"><mat-icon>info</mat-icon></button>
     </td>
   </ng-container>
@@ -161,8 +206,8 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-
 </div>
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
   

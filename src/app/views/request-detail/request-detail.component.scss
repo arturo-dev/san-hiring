@@ -1,5 +1,14 @@
+@import '~@angular/material/theming';
+@import 'theme/san-white';
+
 .header-tab {
     margin-left: -60px;
+    min-width: 160px;
+}
+
+::ng-deep .mat-form-field-disabled .mat-form-field-label {
+    color: mat-color($san-app-primary);
+    font-weight: bold;
 }
 
 .tab-content {

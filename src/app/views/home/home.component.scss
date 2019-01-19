@@ -46,6 +46,18 @@ mat-expansion-panel {
 
 .wrapper-actions {
     min-height: 40px;
+
+    .visible {
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .invisible {
+        opacity: 0;
+        transform: translate(-300px, 0px);
+        pointer-events: none;
+        transition: all 0.5s ease;
+    }
 }
 
 .wrapper-table {
@@ -92,6 +104,24 @@ table {
 
     .no-border {
         border: 0px !important;
+    }
+
+    .info-color {
+        float: left;
+        width: 6px;
+        padding: 8px;
+        border-radius: 4px;
+        margin-right: 8px;
+    }
+
+    .ok {
+        background-color: #43a047;
+        color: white;
+    }
+
+    .ko {
+        background-color: #e53935;
+        color: white;
     }
 
     tr.mat-row:nth-child(even) td.mat-cell {

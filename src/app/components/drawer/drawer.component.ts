@@ -46,17 +46,22 @@ export class DrawerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.activeElement(this.router.url);
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
-        for (let o of this.options) {
-          if (e.urlAfterRedirects.indexOf(o.route.join('/')) > -1) {
-            o.active = true;
-          } else {
-            o.active = false;
-          }
-        }
+        this.activeElement(e.urlAfterRedirects);
       }
     });
+  }
+
+  activeElement(url: string) {
+    for (let o of this.options) {
+      if (url.indexOf(o.route.join('/')) > -1) {
+        o.active = true;
+      } else {
+        o.active = false;
+      }
+    }
   }
 
   navigate(option): void {
@@ -66,4 +71,5 @@ export class DrawerComponent implements OnInit {
 
     this.router.navigate([Constant.PATH_VIEW].concat(option.route));
   }
+
 }

@@ -3,9 +3,10 @@
 
   <nav>
     <ul class="menu">
-      <li class="menu-option" 
-        [ngClass]="{ 'active': option.active }" 
-        *ngFor="let option of options"
+      <li class="menu-option"
+        [ngClass]="{ 'active': option.active, 'fix': option.fix }" 
+        *ngFor="let option of options; let i = index"
+        (keypress)="navigate(option)"
         (click)="navigate(option)">
         <mat-icon>{{option.icon}}</mat-icon>
         <span class="icon-align">{{option.label}}</span>

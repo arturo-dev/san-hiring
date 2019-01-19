@@ -23,8 +23,8 @@ mat-card {
     }
     
     mat-form-field {
-        width: 100%;
-        margin: 24px 17px 0px 17px;
+        margin: 0px 17px 0px 17px;
+        min-width: 200px;
     }
 
     .mat-card-actions {

@@ -27,7 +27,8 @@ export class HomeComponent implements OnInit {
     'date', 
     'organizacion',
     'dg',
-    'rrhh',
+    'interno',
+    'comite',
     'actions'
   ];
   dataSource: MatTableDataSource<any>;
@@ -40,26 +41,86 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource([
+    const data = [
       {
         id: 1,
-        description: 'Solicitud recurso 1 blah blah blah fjkdlfjkbdn bfbsdahj fbda fasdbjh bfdjlsba fbad',
-        dateCreation: '19-oct',
+        description: 'Solicitud recurso 1',
+        dateCreation: new Date(),
+        area: 'Desarrollo',
+        departamento: 'COREBANKING',
+        propietario: 'Director 1',
+        state: 'RECHAZADA',
+        date: new Date(),
+        organizacion: 'OK',
+        dg: 'KO'
+      },
+      {
+        id: 2,
+        description: 'Solicitud recurso 1',
+        dateCreation: new Date(),
+        area: 'Desarrollo',
+        departamento: 'COREBANKING',
+        propietario: 'Director 1',
+        state: 'RECHAZADA',
+        date: new Date(),
+        organizacion: 'OK',
+        dg: 'OK',
+        interno: 'KO'
+      },
+      {
+        id: 3,
+        description: 'Solicitud recurso 1',
+        dateCreation: new Date(),
+        area: 'Desarrollo',
+        departamento: 'COREBANKING',
+        propietario: 'Director 1',
+        state: 'RECHAZADA',
+        date: new Date(),
+        organizacion: 'OK',
+        dg: 'OK',
+        interno: 'OK',
+        comite: 'KO'
+      },
+      {
+        id: 4,
+        description: 'Solicitud recurso 1',
+        dateCreation: new Date(),
+        area: 'Desarrollo',
+        departamento: 'COREBANKING',
+        propietario: 'Director 1',
+        state: 'APROBADA',
+        date: new Date(),
+        organizacion: 'OK',
+        dg: 'OK',
+        interno: 'OK',
+        comite: 'OK'
+      },
+      {
+        id: 5,
+        description: 'Solicitud recurso 1',
+        dateCreation: new Date(),
         area: 'Desarrollo',
         departamento: 'COREBANKING',
         propietario: 'Director 1',
         state: 'PDTE. APROBAR',
-        date: '19-oct'
-      },
-      {id: 2, date: '01-01-2019'},
-      {id: 3},
-      {id: 4},
-      {id: 5},
-      {id: 6},
-      {id: 7},
-      {id: 8},
-      {id: 9},
-    ]); 
+        date: new Date(),
+      }
+    ];
+
+    for (var i = 0; i < 100; i ++) {
+      data.push({
+        id: i + 6,
+        description: 'Solicitud recurso ' + (i + 6),
+        dateCreation: new Date(),
+        area: 'Desarrollo',
+        departamento: 'COREBANKING',
+        propietario: 'Director 1',
+        state: 'PDTE. APROBAR',
+        date: new Date(),
+      })
+    }
+
+    this.dataSource = new MatTableDataSource(data); 
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
@@ -93,6 +154,28 @@ export class HomeComponent implements OnInit {
     this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  canSomeAprove(element) {
+    if (element.organizacion === 'KO'
+      || element.dg == 'KO'
+      || element.interno == 'KO'
+      || element.comite == 'KO'
+      || element.comite == 'OK') {
+        return false;
+      }
+
+      return true;
+  }
+
+  canSelectionAprove() {
+    for (let elem of this.selection.selected) {
+      if (!this.canSomeAprove(elem)) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
 }

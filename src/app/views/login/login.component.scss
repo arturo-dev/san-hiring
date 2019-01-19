@@ -1,0 +1,27 @@
+@import '~@angular/material/theming';
+@import 'theme/san-white';
+
+mat-card {
+    width: 240px;
+    margin: 80px auto;
+}
+
+img {
+    max-width: 180px;
+    margin: 24px 32px;
+    margin-top: 0px !important;
+}
+
+mat-card-actions {
+    text-align: center;
+}
+
+::ng-deep .mat-form-field-disabled .mat-form-field-label {
+    color: mat-color($san-app-primary);
+}
+
+::ng-deep .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    background-image: linear-gradient(to right, mat-color($san-app-primary) 0%, mat-color($san-app-primary) 33%, transparent 0%);
+    background-size: 4px 100%;
+    background-repeat: repeat-x;
+}

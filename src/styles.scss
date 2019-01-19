@@ -8,3 +8,10 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
     margin-top: 5px;
     margin-left: 12px;
 }
+
+@import '~@angular/material/theming';
+@import 'theme/san-white';
+
+html {
+    background-color: mat-color($san-app-accent);
+}

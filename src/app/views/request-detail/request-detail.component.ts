@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestDetailComponent implements OnInit {
 
+  cols: number;
+
   logs = [
     {
-      user: 'Pepito',
-      action: 'Aprueba',
+      user: 'John Doe',
+      action: 'Crea',
       state: 'ACEPTADA',
       date: '01-01-2019 13:43'
     }
@@ -19,6 +21,11 @@ export class RequestDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.cols = Math.floor(window.innerWidth / 300);
+  }
+
+  setCols(e) {
+    this.cols = Math.floor(window.innerWidth / 300);
   }
 
 }

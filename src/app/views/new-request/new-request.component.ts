@@ -12,6 +12,8 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 export class NewRequestComponent implements OnInit {
 
   buttonsDisabled = false;
+  cols: number;
+
   form: FormGroup;
   peticionario = new FormControl();
   motivosolicitud = new FormControl();
@@ -28,6 +30,11 @@ export class NewRequestComponent implements OnInit {
     this.form.addControl('peticionario', this.peticionario);
     this.form.addControl('motivosolicitud', this.motivosolicitud);
     this.form.addControl('category', this.category);
+    this.cols = Math.floor(window.innerWidth / 300);
+  }
+
+  setCols(e) {
+    this.cols = Math.floor(window.innerWidth / 300);
   }
 
   submit(e): void {

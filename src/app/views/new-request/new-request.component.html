@@ -5,106 +5,102 @@
 
   <form [formGroup]="form" (submit)="submit($event)">
     <mat-card-content>
-      <mat-grid-list cols="1" rowHeight="76px">
+      <mat-grid-list [cols]="cols" rowHeight="90px" (window:resize)="setCols($event)">
         <mat-grid-tile>
           <mat-form-field class="errorPeticionario">
-            <input matInput placeholder="PETICIONARIO" [formControl]="peticionario" required [errorStateMatcher]="matcher">
-            <mat-error *ngIf="peticionario.hasError('peticionario') && !peticionario.hasError('required')">
-              Entra un nombre válido
-            </mat-error>
+            <input matInput placeholder="Peticionario" [matAutocomplete]="auto" [formControl]="peticionario" required>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option [value]="'John Doe'" *ngIf="peticionario.value?.length > 2">
+                <span>John Doe</span>
+              </mat-option>
+              <mat-option [value]="'Jane Doe'" *ngIf="peticionario.value?.length > 2">
+                <span>Jane Doe</span>
+              </mat-option>
+            </mat-autocomplete>
             <mat-error *ngIf="peticionario.hasError('required')">
-              El campo "Peticionario" <strong>es obligatorio</strong>
+              Campo <strong>obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
 
-
         <mat-grid-tile>
           <mat-form-field class="errorMotivoSolicitud">
-            <input matInput placeholder="MOTIVO DE LA SOLICITUD" [formControl]="motivosolicitud" required
-              [errorStateMatcher]="matcher">
-            <mat-error *ngIf="motivosolicitud.hasError('motivosolicitud')
-                && !motivosolicitud.hasError('required')">
-              Entra un motivo válido.
-            </mat-error>
+            <input matInput placeholder="Motivo de la solicitud" [formControl]="motivosolicitud" required>
             <mat-error *ngIf="motivosolicitud.hasError('required')">
-              El campo "Motivo de la Solicitud" <strong>es obligatorio</strong>
+              Campo <strong>obligatorio</strong>
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="inpuSustitucion">
-            <input matInput placeholder="Sustitución de: " value="">
+            <input matInput placeholder="Sustitución de" value="">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="inpuSelectServicioSugerido">
-            <mat-select placeholder="SERVICIO SUGERIDO">
-              <mat-option *ngFor="let suggestedservice of suggestedservices" [value]="suggestedservice.value">
-                {{suggestedservice.viewValue}}
-              </mat-option>
+            <mat-select placeholder="Servicio sugerido">
+              <mat-option></mat-option>
+              <mat-option value="valid">Opcion 1</mat-option>
+              <mat-option value="invalid">Opción 2</mat-option>
             </mat-select>
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="inputProveedor">
-            <input matInput placeholder="Proveedor: " value="">
+            <input matInput placeholder="Proveedor" value="">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="inputJustificacionServicioSugerido">
-            <input matInput placeholder="JUSTIFICACIÓN SERVICIO SUGERIDO: " value="">
+            <input matInput placeholder="Justificación servicio sugerido" value="">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="inputObservaciones">
-            <textarea matInput placeholder="OBSERVACIONES: "></textarea>
+            <textarea matInput placeholder="Observaciones"></textarea>
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="categoriafuncional">
-              <mat-select placeholder="CATEGORÍA FUNCIONAL" [formControl]="category"
-              required [errorStateMatcher]="matcher">
-                  <mat-option>Limpiar</mat-option>
-                  <mat-option value="valid">Opción Válida</mat-option>
-                  <mat-option value="invalid">Opción Inválida</mat-option>
+              <mat-select placeholder="Categoria funcional" [formControl]="category"
+              required>
+                  <mat-option></mat-option>
+                  <mat-option value="valid">Opcion 1</mat-option>
+                  <mat-option value="invalid">Opción 2</mat-option>
                 </mat-select>
-                <mat-error *ngIf="category.hasError('required')">Debes de hacer una selección</mat-error>
-                <mat-error *ngIf="category.hasError('pattern') && !category.hasError('required')">
-                  Tu selección es inválida
+                <mat-error *ngIf="category.hasError('required')">
+                    Campo <strong>obligatorio</strong>
                 </mat-error>
           </mat-form-field>
         </mat-grid-tile>
 
-
-
         <mat-grid-tile>
           <mat-form-field class="inputLimiteSupTarifa">
-            <input matInput placeholder="LÍMITE SUP. TARIFA " value="">
+            <input matInput placeholder="Limite sup. tarifa" value="">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="inputNRecursos">
-            <input matInput placeholder=" Nº  DE RECURSOS" value="">
+            <input matInput placeholder="Nº de recursos" value="">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="inputPerfil">
-            <input matInput placeholder="PERFIL" value="">
+            <input matInput placeholder="Perfil" value="">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-form-field class="inputTecnologia">
-            <input matInput placeholder="TECNOLOGÍA" value="">
+            <input matInput placeholder="Tecnología" value="">
           </mat-form-field>
         </mat-grid-tile>
 
@@ -123,8 +119,6 @@
             <mat-datepicker #elegir2></mat-datepicker>
           </mat-form-field>
         </mat-grid-tile>
-
-
       </mat-grid-list>
 
     </mat-card-content>
